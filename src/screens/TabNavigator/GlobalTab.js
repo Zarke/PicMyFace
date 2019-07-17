@@ -1,25 +1,13 @@
 import React, { Component } from "react";
 import { 
-  View,
-  Text,
-  StyleSheet
+  ImageBackground
 } from "react-native";
 
 class GlobalTab extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>GlobalTab</Text>
-      </View>
+      <ImageBackground source={require('../../assets/screens/04.4.1_Main_Explore.jpg')} style={{ width:'100%',height:'100%'}} resizeMode='stretch'/>
     );
   }
 }
-export default GlobalTab;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
+export default GlobalTab

@@ -1,25 +1,13 @@
 import React, { Component } from "react";
 import { 
-  View,
-  Text,
-  StyleSheet
+  ImageBackground
 } from "react-native";
 
 class EventsTab extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>EventsTab</Text>
-      </View>
-    );
+      <ImageBackground source={require('../../assets/screens/04.3.1_Main_My_Events.jpg')} style={{ width:'100%',height:'100%'}} resizeMode='stretch'/>
+    )
   }
 }
-export default EventsTab;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
+export default EventsTab
