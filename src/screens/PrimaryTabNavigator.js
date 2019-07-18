@@ -8,7 +8,8 @@ import {
   Image
 } from "react-native";
 import { createMaterialTopTabNavigator, createAppContainer } from 'react-navigation'
-import NotificationNavigator from './NotificationNavigator'
+import Invites from './NotificationsNavigator/Invites'
+import MessagesTab from './NotificationsNavigator/MessagesTab'
 import FriendsTab from './TabNavigator/FriendsTab'
 import EventsTab from './TabNavigator/EventsTab'
 import GlobalTab from './TabNavigator/GlobalTab'
@@ -23,13 +24,13 @@ class TabNav extends Component {
 export default TabNav;
 
 const PrimaryTabNavigator = createAppContainer(createMaterialTopTabNavigator({
-  Notifications: { screen: NotificationNavigator },
+  Invites: { screen: Invites },
+  Messages: {screen: MessagesTab},
   Friends: { screen: FriendsTab },
   Events: { screen: EventsTab },
   Global: { screen: GlobalTab }
-  
 }, {
-    initialRouteName: 'Notifications',
+    initialRouteName: 'Invites',
     lazy: true,
     swipeEnabled:true,
     tabBarComponent: props => {
@@ -47,7 +48,7 @@ const PrimaryTabNavigator = createAppContainer(createMaterialTopTabNavigator({
             </TouchableNativeFeedback>
           </View>
           <View style={styles.tabNavigation}>
-            <TouchableNativeFeedback onPress={() => props.navigation.navigate('Notifications')} style={styles.tabItem}>
+            <TouchableNativeFeedback onPress={() => props.navigation.navigate('Invites')} style={styles.tabItem}>
               <Image source={require('../assets/icons/topbar_alarm_icon.png')} style={[styles.tabImage]} />
             </TouchableNativeFeedback>
             <TouchableNativeFeedback onPress={() => props.navigation.navigate('Friends')} style={styles.tabItem}>
