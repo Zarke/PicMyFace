@@ -7,7 +7,7 @@ import {
   TouchableNativeFeedback,
   Image
 } from "react-native";
-import { createMaterialTopTabNavigator, createAppContainer } from 'react-navigation'
+import { createMaterialTopTabNavigator, DrawerActions,createDrawerNavigator, createAppContainer } from 'react-navigation'
 import Invites from './NotificationsNavigator/Invites'
 import MessagesTab from './NotificationsNavigator/MessagesTab'
 import FriendsTab from './TabNavigator/FriendsTab'
@@ -23,8 +23,23 @@ class TabNav extends Component {
 }
 export default TabNav;
 
+const CustomDrawerComponent = props => {
+  return (
+    <ImageBackground source={require('../assets/screens/12_Side_Menu.jpg')} style={{flex: 1,
+      alignSelf: 'stretch',
+      width: undefined,
+      height: undefined}}  />
+  )
+}
+
+const AppDrawerNavigator = createAppContainer(createDrawerNavigator({
+  Invite: { screen: Invites },
+}, {
+  contentComponent: CustomDrawerComponent
+  }))
+
 const PrimaryTabNavigator = createAppContainer(createMaterialTopTabNavigator({
-  Invites: { screen: Invites },
+  Invites: { screen: AppDrawerNavigator },
   Messages: {screen: MessagesTab},
   Friends: { screen: FriendsTab },
   Events: { screen: EventsTab },
@@ -37,7 +52,7 @@ const PrimaryTabNavigator = createAppContainer(createMaterialTopTabNavigator({
       return (
         <ImageBackground source={require('../assets/header_background_main_screen.jpg')} style={{ width: '100%', height: 150 }}>
           <View style={styles.headerTop}>
-            <TouchableNativeFeedback onPress={() => props.navigation.navigate('DrawerNav')} style={{ flex:1, height:'30%',alignItems:'flex-start'}}>
+            <TouchableNativeFeedback onPress={() => props.navigation.dispatch(DrawerActions.toggleDrawer())} style={{ flex:1, height:'30%',alignItems:'flex-start'}}>
               <Image source={require('../assets/icons/left_menu_button.png')} style={{resizeMode: 'center',width:40,height:40}} />
             </TouchableNativeFeedback>
             <View style={{ flex: 3, alignItems:'center'}}>
