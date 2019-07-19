@@ -9,6 +9,10 @@ import {
 import { withNavigationFocus } from "react-navigation";
 
 class MessagesTab extends Component {
+  componentDidMount() {
+    
+  }
+  
   componentDidUpdate(prevProps) {
     if (prevProps.isFocused !== this.props.isFocused) {
       this.setState({btnActive: this.state.btnActive ? false : true})
